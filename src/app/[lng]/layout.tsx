@@ -10,7 +10,7 @@ import '../globals.css';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://the-knife-app.vercel.app'),
   title: "The Knife - Your Social Food Discovery App",
   description: "Find the best restaurants, cafés, and bars in the Netherlands with our AI-powered social food discovery platform.",
   icons: {
