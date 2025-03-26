@@ -1,9 +1,8 @@
 'use client'
 
 import React from 'react'
-import { useState, useEffect } from 'react'
 import { useTranslation } from '@/i18n/client'
-import { MapPin, Utensils, Shield, HeartHandshake, ChevronRight, Search, Users, Star } from 'lucide-react'
+import { ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
 import MagicText from '@/components/MagicText'
@@ -24,27 +23,6 @@ export default function Home({
   // Unwrap params using React.use()
   const { lng } = React.use(params)
   const { t } = useTranslation(lng, 'common')
-  const [isVisible, setIsVisible] = useState(false)
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true)
-    }, 500)
-    return () => clearTimeout(timer)
-  }, [])
-
-  const fadeInUpVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.08,
-        duration: 0.4,
-        ease: 'easeOut'
-      }
-    })
-  }
 
   const features: FeatureType[] = [
     {

@@ -3,7 +3,6 @@
 import { useEffect, useState, useRef } from 'react'
 import LanguageSwitcher from './LanguageSwitcher'
 import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
 import { ChevronRight, ChevronDown } from 'lucide-react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -13,7 +12,6 @@ import logo from '@/assets/images/1.png'
 
 export default function AnimatedHeader() {
   const { t } = useTranslation('common', 'common');
-  const [windowHeight, setWindowHeight] = useState(0);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [mounted, setMounted] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
@@ -27,22 +25,15 @@ export default function AnimatedHeader() {
 
   useEffect(() => {
     setMounted(true);
-    setWindowHeight(window.innerHeight);
-
-    const handleResize = () => {
-      setWindowHeight(window.innerHeight);
-    };
 
     const handleScroll = () => {
       const position = window.scrollY;
       setScrollPosition(position);
     };
 
-    window.addEventListener('resize', handleResize);
     window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);

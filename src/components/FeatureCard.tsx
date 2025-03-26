@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { useTranslation } from '@/i18n/client';
 import { Search, Users, Sparkles } from 'lucide-react';
 
 interface FeatureCardProps {

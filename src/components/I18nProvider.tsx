@@ -7,17 +7,16 @@ import i18next from 'i18next'
 // Create a context to hold the current language
 export const I18nContext = createContext({
   locale: 'en',
-  setLocale: (_locale: string) => {},
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  setLocale: (locale: string) => {},
 })
 
 export default function I18nProvider({
   children,
   locale = 'en',
-  namespaces = ['common'],
 }: {
   children: React.ReactNode
   locale?: string
-  namespaces?: string[]
 }) {
   const [mounted, setMounted] = useState(false)
   const router = useRouter()

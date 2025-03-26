@@ -39,15 +39,15 @@ export default async function Layout({
   params,
 }: {
   children: React.ReactNode;
-  params: { lng: string };
+  params: Promise<{ lng: string }>;
 }) {
-  const lng = await Promise.resolve(params.lng);
+  const { lng } = await params;
 
   return (
     <html lang={lng} dir={dir(lng)} suppressHydrationWarning>
       <head />
       <body className={`${inter.className} bg-white text-gray-900`}>
-        <I18nProvider locale={lng} namespaces={['common']}>
+        <I18nProvider locale={lng}>
           <ThemeProvider 
             attribute="class" 
             defaultTheme="light" 
