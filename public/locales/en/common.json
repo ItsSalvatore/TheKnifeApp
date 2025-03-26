@@ -1,0 +1,44 @@
+{
+  "hero": {
+    "title": "Discover Your Perfect Spot",
+    "subtitle": "AI-powered recommendations for the best cafés, restaurants, and bars in the Netherlands",
+    "cta": "Download Now"
+  },
+  "about": {
+    "title": "About The Knife",
+    "description": "Our AI-driven platform combines your preferences with real-time data to find the perfect venue for any occasion."
+  },
+  "features": {
+    "title": "Key Features",
+    "personalized": {
+      "title": "Personalized Recommendations",
+      "description": "Get tailored suggestions based on your preferences and occasion"
+    },
+    "ai": {
+      "title": "AI-Enhanced Search",
+      "description": "Smart algorithms that understand your taste and preferences"
+    },
+    "community": {
+      "title": "Community Driven",
+      "description": "Real reviews and verifications from our active community"
+    }
+  },
+  "testimonials": {
+    "title": "What Our Users Say"
+  },
+  "demo": {
+    "title": "See It In Action",
+    "description": "Experience how The Knife helps you find your perfect spot"
+  },
+  "newsletter": {
+    "title": "Stay Updated",
+    "description": "Subscribe to get the latest updates and features",
+    "placeholder": "Enter your email",
+    "submit": "Subscribe"
+  },
+  "footer": {
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "contact": "Contact Us"
+  }
+} 

@@ -1,0 +1,44 @@
+{
+  "hero": {
+    "title": "Ontdek Je Perfecte Plek",
+    "subtitle": "AI-aangedreven aanbevelingen voor de beste cafés, restaurants en bars in Nederland",
+    "cta": "Download Nu"
+  },
+  "about": {
+    "title": "Over The Knife",
+    "description": "Ons AI-aangedreven platform combineert jouw voorkeuren met real-time data om de perfecte locatie te vinden voor elke gelegenheid."
+  },
+  "features": {
+    "title": "Belangrijkste Kenmerken",
+    "personalized": {
+      "title": "Gepersonaliseerde Aanbevelingen",
+      "description": "Ontvang op maat gemaakte suggesties op basis van jouw voorkeuren en gelegenheid"
+    },
+    "ai": {
+      "title": "AI-Versterkte Zoekfunctie",
+      "description": "Slimme algoritmes die jouw smaak en voorkeuren begrijpen"
+    },
+    "community": {
+      "title": "Community Gedreven",
+      "description": "Echte reviews en verificaties van onze actieve community"
+    }
+  },
+  "testimonials": {
+    "title": "Wat Onze Gebruikers Zeggen"
+  },
+  "demo": {
+    "title": "Zie Het In Actie",
+    "description": "Ervaar hoe The Knife je helpt bij het vinden van je perfecte plek"
+  },
+  "newsletter": {
+    "title": "Blijf Op De Hoogte",
+    "description": "Schrijf je in voor de laatste updates en functies",
+    "placeholder": "Voer je e-mailadres in",
+    "submit": "Inschrijven"
+  },
+  "footer": {
+    "privacy": "Privacybeleid",
+    "terms": "Gebruiksvoorwaarden",
+    "contact": "Contact"
+  }
+} 
