@@ -46,3 +46,12 @@ videos/*
 !videos/*.js
 !videos/*.ts
 public/_next-video
+
+the-knife-site
+
+# next-video
+videos/*
+!videos/*.json
+!videos/*.js
+!videos/*.ts
+public/_next-video

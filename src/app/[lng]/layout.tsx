@@ -41,7 +41,7 @@ export default async function Layout({
   children: React.ReactNode;
   params: { lng: string };
 }) {
-  const lng = params.lng;
+  const lng = await Promise.resolve(params.lng);
 
   return (
     <html lang={lng} dir={dir(lng)} suppressHydrationWarning>
