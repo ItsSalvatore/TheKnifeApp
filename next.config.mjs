@@ -1,20 +1,16 @@
-import { withNextVideo } from "next-video/process";
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  webpack: (config, { isServer }) => {
-    // Handle video files
+  images: {
+    domains: ['images.unsplash.com'],
+  },
+  webpack: (config) => {
     config.module.rules.push({
       test: /\.(mp4|webm)$/,
-      use: {
-        loader: 'file-loader',
-        options: {
-          publicPath: '/_next/static/videos/',
-          outputPath: `${isServer ? '../' : ''}static/videos/`,
-          name: '[name].[hash].[ext]',
-        },
-      },
+      type: 'asset/resource',
+      generator: {
+        filename: 'static/videos/[name].[hash][ext]'
+      }
     });
     return config;
   },
@@ -29,4 +25,4 @@ const nextConfig = {
   },
 }
 
-export default withNextVideo(nextConfig);
+export default nextConfig;
