@@ -7,7 +7,6 @@ import AnimatedHeader from "@/components/AnimatedHeader";
 import { Providers } from "@/components/Providers";
 import '../globals.css'
 import '@/styles/themes.css'
-import { use } from "react";
 
 const poppins = Poppins({ 
   subsets: ["latin"],
@@ -16,8 +15,10 @@ const poppins = Poppins({
 });
 
 const cupcakes = localFont({
-  src: '../../assets/fonts/CupCakes.otf',
+  src: '../../../public/fonts/CupCakes.otf',
   variable: '--font-cupcakes',
+  preload: true,
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -36,15 +37,16 @@ export async function generateStaticParams() {
 
 export default function RootLayout({
   children,
-  params,
+  params: { lng },
 }: {
   children: React.ReactNode;
-  params: Promise<{ lng: string }>;
+  params: { lng: string };
 }) {
-  const { lng } = use(params);
-  
   return (
     <html lang={lng} dir={dir(lng)} suppressHydrationWarning className={`${poppins.variable} ${cupcakes.variable} font-sans antialiased`}>
+      <head>
+        <link rel="preload" href="/fonts/CupCakes.otf" as="font" type="font/otf" crossOrigin="anonymous" />
+      </head>
       <body className="min-h-screen font-normal bg-[#cddfcd] dark:bg-olive-900">
         <Providers locale={lng}>
           <AnimatedHeader />

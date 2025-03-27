@@ -2,33 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'CupCakes';
-  src: url('/fonts/CupCakes.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-:root {
-  --honey: #ffa938;
-  --honey-light: #fad099;
-  --olive: #668966;
-  --olive-light: #cddfcd;
-  --bg-gradient: linear-gradient(135deg, #cddfcd 0%, #e3e8e3 100%);
-  --header-honey: #ff8a00;
-}
-
-.dark {
-  --honey: #ff9920;
-  --honey-light: #804d1d;
-  --olive: #496649;
-  --olive-light: #2c3d2c;
-  --bg-gradient: linear-gradient(135deg, #2c3d2c 0%, #1a2a1a 100%);
-  --header-honey: #ff7b00;
-}
-
 @layer base {
+  :root {
+    --font-cupcakes: var(--font-cupcakes, 'CupCakes');
+  }
+
+  @font-face {
+    font-family: 'CupCakes';
+    src: url('/fonts/CupCakes.otf') format('opentype');
+    font-display: swap;
+  }
+
   body {
     background-color: var(--olive-light);
     @apply text-olive-900;
@@ -89,21 +73,11 @@
   }
 
   .nav-link {
-    font-family: 'CupCakes', cursive;
-    @apply text-olive-900 dark:text-white 
-           hover:text-honey-600 dark:hover:text-honey-500
-           transition-colors duration-300 text-lg;
-    letter-spacing: 0.02em;
+    @apply text-olive-900 dark:text-white hover:text-honey-600 dark:hover:text-honey-500 transition-colors;
   }
 
   .btn-primary {
-    font-family: 'CupCakes', cursive;
-    @apply bg-olive-800 dark:bg-olive-600
-           text-white
-           hover:bg-olive-900 dark:hover:bg-olive-700 
-           transition-all duration-300 
-           text-lg px-6 py-2 rounded-full;
-    letter-spacing: 0.02em;
+    @apply bg-honey-500 hover:bg-honey-600 text-white rounded-full transition-colors;
   }
 
   .btn-secondary {
