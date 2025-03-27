@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100" height="100" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="honeycomb" x="0" y="0" width="30" height="52" patternUnits="userSpaceOnUse">
+      <!-- First row of hexagons -->
+      <path d="M15,0 L30,8.66 L30,25.98 L15,34.64 L0,25.98 L0,8.66 Z" 
+            fill="none" 
+            stroke="#668966" 
+            stroke-opacity="0.08" 
+            stroke-width="0.5"/>
+      <!-- Second row of hexagons (offset) -->
+      <path d="M30,25.98 L45,34.64 L45,51.96 L30,60.62 L15,51.96 L15,34.64 Z" 
+            fill="none" 
+            stroke="#668966" 
+            stroke-opacity="0.08" 
+            stroke-width="0.5"/>
+      <!-- Additional hexagon for pattern completion -->
+      <path d="M0,25.98 L15,34.64 L15,51.96 L0,60.62 L-15,51.96 L-15,34.64 Z" 
+            fill="none" 
+            stroke="#668966" 
+            stroke-opacity="0.08" 
+            stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#honeycomb)"/>
+</svg> 

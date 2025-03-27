@@ -2,35 +2,189 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'CupCakes';
+  src: url('/fonts/CupCakes.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --honey: #ffa938;
+  --honey-light: #fad099;
+  --olive: #668966;
+  --olive-light: #cddfcd;
+  --bg-gradient: linear-gradient(135deg, #cddfcd 0%, #e3e8e3 100%);
+  --header-honey: #ff8a00;
+}
+
+.dark {
+  --honey: #ff9920;
+  --honey-light: #804d1d;
+  --olive: #496649;
+  --olive-light: #2c3d2c;
+  --bg-gradient: linear-gradient(135deg, #2c3d2c 0%, #1a2a1a 100%);
+  --header-honey: #ff7b00;
+}
+
 @layer base {
   body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    background-color: var(--olive-light);
+    @apply text-olive-900;
+  }
+
+  body.dark {
+    @apply bg-olive-900 text-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'CupCakes', cursive;
+    @apply text-olive-900 dark:text-white;
+    font-weight: normal;
+    letter-spacing: 0.03em;
+  }
+
+  h1 { 
+    @apply text-4xl md:text-5xl lg:text-6xl;
+    letter-spacing: 0.04em;
+  }
+  h2 { 
+    @apply text-3xl md:text-4xl lg:text-5xl;
+    letter-spacing: 0.035em;
+  }
+  h3 { 
+    @apply text-2xl md:text-3xl;
+    letter-spacing: 0.03em;
+  }
+  h4 { 
+    @apply text-xl md:text-2xl;
+    letter-spacing: 0.025em;
+  }
+
+  p {
+    @apply font-sans text-olive-900 dark:text-white leading-relaxed;
+  }
+
+  select, input, textarea {
+    @apply font-sans;
   }
 }
 
 @layer components {
-  .glass-effect {
-    @apply bg-white/10 backdrop-blur-md border-border;
+  .nav-container {
+    @apply fixed top-0 left-0 right-0 z-50 bg-olive-50/80 dark:bg-olive-900/80 backdrop-blur-sm border-b border-olive-200 dark:border-olive-800;
   }
 
-  .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+  .nav-content {
+    @apply container mx-auto px-4 h-16 flex items-center justify-between;
+  }
+
+  .nav-links {
+    @apply flex items-center;
+  }
+
+  .nav-controls {
+    @apply flex items-center gap-2;
+  }
+
+  .nav-link {
+    font-family: 'CupCakes', cursive;
+    @apply text-olive-900 dark:text-white 
+           hover:text-honey-600 dark:hover:text-honey-500
+           transition-colors duration-300 text-lg;
+    letter-spacing: 0.02em;
+  }
+
+  .btn-primary {
+    font-family: 'CupCakes', cursive;
+    @apply bg-olive-800 dark:bg-olive-600
+           text-white
+           hover:bg-olive-900 dark:hover:bg-olive-700 
+           transition-all duration-300 
+           text-lg px-6 py-2 rounded-full;
+    letter-spacing: 0.02em;
+  }
+
+  .btn-secondary {
+    font-family: 'CupCakes', cursive;
+    @apply bg-white/80 backdrop-blur-sm text-olive-900 border-2 border-olive-400
+           hover:bg-olive-50 transition-all duration-300
+           dark:bg-olive-800/50 dark:text-white dark:border-olive-600 
+           dark:hover:bg-olive-700/70
+           text-lg px-6 py-2 rounded-full;
+  }
+
+  .card {
+    @apply bg-white/90 backdrop-blur-sm rounded-2xl p-6
+           border border-olive-400 shadow-sm
+           hover:shadow-md transition-all duration-300;
+  }
+
+  .text-accent {
+    font-family: 'CupCakes', cursive;
+    @apply text-olive-900 dark:text-honey-500;
+    letter-spacing: 0.03em;
+  }
+
+  .honeycomb-pattern {
+    @apply absolute inset-0;
+    background-image: url('/honeycomb.svg');
+    background-repeat: repeat;
+    background-size: 800px auto;
+    opacity: 0.2;
+    background-color: var(--olive);
+    mix-blend-mode: soft-light;
+  }
+
+  .header-pattern {
+    @apply absolute inset-0;
+    background-color: var(--olive-light);
+    background-image: url('/honeycomb.svg');
+    background-repeat: repeat;
+    background-size: 1200px auto;
+    opacity: 0.3;
+    mix-blend-mode: multiply;
+  }
+
+  .section-pattern {
+    @apply absolute inset-0;
+    background-image: url('/honeycomb.svg');
+    background-repeat: repeat;
+    background-size: 600px auto;
+    opacity: 0.1;
+    mix-blend-mode: multiply;
+  }
+
+  .header-content {
+    @apply absolute inset-0 flex flex-col items-center justify-center text-center gap-12;
+  }
+
+  .header-title {
+    @apply text-6xl md:text-8xl font-display text-olive-900 dark:text-white;
+  }
+
+  .header-subtitle {
+    @apply text-2xl md:text-3xl font-display text-honey-600 dark:text-honey-500;
+  }
+
+  .scroll-indicator {
+    @apply absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-olive-900/80 dark:text-white/80;
+  }
+
+  .nav-link.active {
+    @apply text-honey-600 dark:text-honey-500;
+  }
+
+  .font-display-style {
+    font-family: 'CupCakes', cursive;
+    @apply text-olive-900 dark:text-white;
+    letter-spacing: 0.03em;
   }
 }
 
 @layer utilities {
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-}
-
-/* Custom animations */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
+  .text-shadow-sm {
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8);
   }
 }

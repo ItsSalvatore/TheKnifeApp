@@ -2,9 +2,9 @@ import { motion } from 'framer-motion';
 import { Search, Users, Sparkles } from 'lucide-react';
 
 interface FeatureCardProps {
-  feature: string;
+  title: string;
   description: string;
-  icon: 'search' | 'community' | 'personalized';
+  icon: string;
 }
 
 const iconComponents = {
@@ -13,34 +13,32 @@ const iconComponents = {
   personalized: Sparkles,
 };
 
-export default function FeatureCard({ feature, description, icon }: FeatureCardProps) {
-  const IconComponent = iconComponents[icon];
+export function FeatureCard({ title, description, icon }: FeatureCardProps) {
+  const IconComponent = iconComponents[icon as keyof typeof iconComponents];
   
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      className="group relative bg-white dark:bg-dark-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+      transition={{ duration: 0.6 }}
+      whileHover={{ y: -5 }}
+      className="relative overflow-hidden"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-[#FF6B6B]/5 via-[#4ECDC4]/5 to-[#45B7D1]/5 dark:from-[#FF6B6B]/10 dark:via-[#4ECDC4]/10 dark:to-[#45B7D1]/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      
-      <div className="relative">
-        <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-[#FF6B6B] via-[#4ECDC4] to-[#45B7D1] p-[1px] group-hover:scale-110 transition-transform duration-300">
-          <div className="w-full h-full rounded-xl bg-white dark:bg-dark-800 flex items-center justify-center">
-            <IconComponent className="w-6 h-6 text-[#4ECDC4]" />
+      <div className="bg-white/90 dark:bg-olive-800/90 backdrop-blur-lg rounded-2xl p-8
+                    border border-olive-100/50 dark:border-olive-700/50 
+                    shadow-lg hover:shadow-xl transition-all duration-300">
+        <div className="flex flex-col items-center text-center gap-6">
+          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-olive-50 to-olive-100 dark:from-olive-700/30 dark:to-olive-700/50 
+                        flex items-center justify-center shadow-inner">
+            {IconComponent && <IconComponent className="w-7 h-7 text-olive-700 dark:text-honey-400" />}
           </div>
+          <h3 className="text-2xl font-display text-olive-900 dark:text-white">{title}</h3>
+          <p className="text-olive-600 dark:text-olive-100">{description}</p>
         </div>
-        
-        <h3 className="mt-4 text-xl font-semibold text-gray-900 dark:text-white">
-          {feature}
-        </h3>
-        
-        <p className="mt-2 text-gray-600 dark:text-gray-300">
-          {description}
-        </p>
       </div>
     </motion.div>
   );
-} 
+}
+
+export default FeatureCard; 

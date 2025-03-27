@@ -39,5 +39,60 @@
   "join_waitlist": "Schrijf Je In",
   "discover_your_perfect_spot": "Ontdek Je Perfecte Plek",
   "launch_description": "Vind de beste cafés, restaurants en bars in Nederland - aangedreven door AI en jouw community.",
-  "scroll_to_explore": "Scroll om te verkennen"
+  "scroll_to_explore": "Scroll om te verkennen",
+  "nav": {
+    "discover": "Ontdekken",
+    "how_it_works": "Hoe werkt het?",
+    "about": "Over ons",
+    "join_now": "Doe mee"
+  },
+  "header": {
+    "title": "Vind Jouw Perfecte Restaurant",
+    "subtitle": "Ontdek restaurants die perfect bij jouw smaak passen"
+  },
+  "features": {
+    "title": "Waarom Scout?",
+    "subtitle": "Wij maken het vinden van jouw perfecte restaurant makkelijk en persoonlijk.",
+    "items": [
+      {
+        "title": "Persoonlijke Match",
+        "description": "Ontdek restaurants die perfect bij jouw smaak en voorkeuren passen."
+      },
+      {
+        "title": "Lokale Ontdekkingen",
+        "description": "Verken de beste lokale restaurants in jouw buurt."
+      },
+      {
+        "title": "Community Reviews",
+        "description": "Lees eerlijke beoordelingen van andere Scout gebruikers."
+      }
+    ]
+  },
+  "steps": {
+    "title": "In drie simpele stappen",
+    "subtitle": "Scout maakt het vinden van jouw nieuwe favoriete restaurant makkelijk.",
+    "items": [
+      {
+        "title": "Maak je profiel",
+        "description": "Vertel ons over je smaak en voorkeuren."
+      },
+      {
+        "title": "Krijg aanbevelingen",
+        "description": "Ontvang persoonlijke restaurantsuggesties."
+      },
+      {
+        "title": "Deel je ervaringen",
+        "description": "Help anderen door je ervaringen te delen."
+      }
+    ]
+  },
+  "featured": {
+    "title": "Uitgelicht restaurant",
+    "subtitle": "Ontdek onze aanbeveling van de week"
+  },
+  "cta": {
+    "title": "Klaar om te beginnen?",
+    "subtitle": "Join de Scout community en ontdek restaurants die perfect bij jou passen.",
+    "button": "Start met Scout"
+  }
 } 

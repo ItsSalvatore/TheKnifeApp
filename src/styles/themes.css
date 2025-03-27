@@ -1,0 +1,49 @@
+:root {
+  /* Base colors */
+  --color-olive-50: #f6f7f4;
+  --color-olive-100: #e8eae3;
+  --color-olive-600: #5c6657;
+  --color-olive-700: #4a5245;
+  --color-olive-800: #3d4339;
+  --color-olive-900: #2c312a;
+  
+  --color-honey-400: #fdb147;
+  --color-honey-500: #f99820;
+  --color-honey-600: #e67e0d;
+
+  /* Light theme defaults */
+  --color-background: var(--color-olive-50);
+  --color-foreground: var(--color-olive-900);
+  --color-primary: var(--color-honey-500);
+  --color-secondary: var(--color-olive-600);
+  
+  --card-background: rgba(255, 255, 255, 0.9);
+  --card-border: rgba(92, 102, 87, 0.1);
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  
+  /* Image treatment for light mode */
+  --image-grayscale: 0;
+  --image-opacity: 100%;
+}
+
+/* Dark theme overrides */
+[data-theme='dark'] {
+  --color-background: var(--color-olive-900);
+  --color-foreground: #ffffff;
+  --color-primary: var(--color-honey-400);
+  --color-secondary: var(--color-olive-100);
+  
+  --card-background: rgba(61, 67, 57, 0.9);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  
+  /* Image treatment for dark mode */
+  --image-grayscale: 20%;
+  --image-opacity: 90%;
+}
+
+/* Apply image filters globally */
+img {
+  filter: grayscale(var(--image-grayscale)) opacity(var(--image-opacity));
+  transition: filter 0.3s ease;
+} 

@@ -6,7 +6,7 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  darkMode: 'class',
+  darkMode: ['class', '[data-theme="dark"]'],
   theme: {
     container: {
       center: true,
@@ -95,6 +95,32 @@ const config: Config = {
           DEFAULT: 'rgb(239 68 68)',
           foreground: 'rgb(255 255 255)',
         },
+        honey: {
+          50: '#fef8ec',
+          100: '#fdefd4',
+          200: '#fad9a9',
+          300: '#f7bf73',
+          400: '#f4a443',
+          500: '#f18712',
+          600: '#db6d0d',
+          700: '#b6510f',
+          800: '#914013',
+          900: '#763613',
+          950: '#401a09',
+        },
+        olive: {
+          50: '#f6f7f4',
+          100: '#e8eae3',
+          200: '#d1d6c8',
+          300: '#b3bc9f',
+          400: '#959e7f',
+          500: '#7c8568',
+          600: '#5c6657',
+          700: '#4a5245',
+          800: '#3d4339',
+          900: '#2c312a',
+          950: '#1a1d19',
+        },
       },
       height: {
         'header': '5rem',
@@ -129,10 +155,18 @@ const config: Config = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'honeycomb': "url('/images/honeycomb-pattern.svg')",
+      },
+      fontFamily: {
+        sans: ['var(--font-poppins)'],
+        cupcake: ['var(--font-cupcakes)'],
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/forms'),
+  ],
 } satisfies Config
 
 export default config 

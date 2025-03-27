@@ -10,20 +10,26 @@ type MagicTextProps = {
   hoverColor?: string
   fontSize?: 'xs' | 'sm' | 'base' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl'
   interactive?: boolean
+  useGradient?: boolean
 }
 
 export default function MagicText({
   text,
   className = '',
-  hoverColor = 'text-primary',
+  hoverColor = 'gradient-text',
   fontSize = 'base',
-  interactive = true
+  interactive = true,
+  useGradient = true
 }: MagicTextProps) {
   // Split the text into character spans
   const characters = text.split('')
   
   return (
-    <div className={cn(`text-${fontSize} inline-block`, className)}>
+    <div className={cn(
+      `text-${fontSize} inline-block font-normal`,
+      useGradient && 'gradient-text',
+      className
+    )}>
       {characters.map((char, index) => (
         <CharacterSpan 
           key={index} 
@@ -33,6 +39,7 @@ export default function MagicText({
           interactive={interactive}
           delay={index * 0.01}
           totalChars={characters.length}
+          useGradient={useGradient}
         />
       ))}
     </div>
@@ -46,9 +53,10 @@ type CharacterSpanProps = {
   interactive: boolean
   delay: number
   totalChars: number
+  useGradient: boolean
 }
 
-function CharacterSpan({ char, index, hoverColor, interactive, delay, totalChars }: CharacterSpanProps) {
+function CharacterSpan({ char, index, hoverColor, interactive, delay, totalChars, useGradient }: CharacterSpanProps) {
   const [isHovered, setIsHovered] = useState(false)
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const hasMounted = useRef(false)
@@ -65,8 +73,8 @@ function CharacterSpan({ char, index, hoverColor, interactive, delay, totalChars
     setIsHovered(true)
     // Subtle movement on hover
     setPosition({ 
-      x: (Math.random() - 0.5) * 6, 
-      y: (Math.random() - 0.5) * 4
+      x: (Math.random() - 0.5) * 4, 
+      y: (Math.random() - 0.5) * 3
     })
   }
   
@@ -85,8 +93,9 @@ function CharacterSpan({ char, index, hoverColor, interactive, delay, totalChars
   return (
     <motion.span
       className={cn(
-        "inline-block transition-colors duration-100",
-        isHovered ? hoverColor : ""
+        "inline-block transition-colors duration-100 font-normal",
+        isHovered ? hoverColor : "",
+        useGradient && "gradient-text"
       )}
       initial={{ 
         opacity: 0,
@@ -97,9 +106,9 @@ function CharacterSpan({ char, index, hoverColor, interactive, delay, totalChars
         opacity: 1,
         y: isHovered ? position.y : 0,
         x: isHovered ? position.x : 0,
-        scale: isHovered ? 1.1 : 1,
+        scale: isHovered ? 1.05 : 1,
         filter: "blur(0px)",
-        rotate: isHovered ? (Math.random() - 0.5) * 8 : 0,
+        rotate: isHovered ? (Math.random() - 0.5) * 6 : 0,
         transition: {
           delay: entryDelay,
           duration: 0.15,
@@ -109,8 +118,7 @@ function CharacterSpan({ char, index, hoverColor, interactive, delay, totalChars
         }
       }}
       whileHover={{ 
-        scale: interactive ? 1.1 : 1,
-        color: interactive ? hoverColor : undefined,
+        scale: interactive ? 1.05 : 1,
         transition: { 
           duration: 0.1, 
           type: "spring",
@@ -121,7 +129,7 @@ function CharacterSpan({ char, index, hoverColor, interactive, delay, totalChars
       onMouseLeave={handleLeave}
       style={{ 
         whiteSpace: isSpace ? "pre" : "normal",
-        textShadow: isHovered ? `0 0 2px ${hoverColor.includes("white") ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.1)"}` : "none",
+        textShadow: isHovered ? "0 1px 2px rgba(0,0,0,0.1)" : "none",
         transformOrigin: "center bottom"
       }}
     >

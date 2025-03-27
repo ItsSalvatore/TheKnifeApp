@@ -39,5 +39,60 @@
   "join_waitlist": "Join the Waitlist",
   "discover_your_perfect_spot": "Discover Your Perfect Spot",
   "launch_description": "Find the best cafés, restaurants, and bars in the Netherlands - powered by AI and your community.",
-  "scroll_to_explore": "Scroll to explore"
+  "scroll_to_explore": "Scroll to explore",
+  "nav": {
+    "discover": "Discover",
+    "how_it_works": "How it works",
+    "about": "About",
+    "join_now": "Join now"
+  },
+  "header": {
+    "title": "Find Your Perfect Restaurant",
+    "subtitle": "Discover restaurants that match your taste perfectly"
+  },
+  "features": {
+    "title": "Why Scout?",
+    "subtitle": "We make finding your perfect restaurant easy and personal.",
+    "items": [
+      {
+        "title": "Personal Match",
+        "description": "Discover restaurants that perfectly match your taste and preferences."
+      },
+      {
+        "title": "Local Discoveries",
+        "description": "Explore the best local restaurants in your area."
+      },
+      {
+        "title": "Community Reviews",
+        "description": "Read honest reviews from other Scout users."
+      }
+    ]
+  },
+  "steps": {
+    "title": "In three simple steps",
+    "subtitle": "Scout makes it easy to find your new favorite restaurant.",
+    "items": [
+      {
+        "title": "Create your profile",
+        "description": "Tell us about your taste and preferences."
+      },
+      {
+        "title": "Get recommendations",
+        "description": "Receive personalized restaurant suggestions."
+      },
+      {
+        "title": "Share your experiences",
+        "description": "Help others by sharing your experiences."
+      }
+    ]
+  },
+  "featured": {
+    "title": "Featured restaurant",
+    "subtitle": "Discover our recommendation of the week"
+  },
+  "cta": {
+    "title": "Ready to start?",
+    "subtitle": "Join the Scout community and discover restaurants that perfectly match you.",
+    "button": "Start with Scout"
+  }
 } 

@@ -1,54 +1,24 @@
 "use client"
 
 import * as React from "react"
-import { MoonIcon, SunIcon } from "lucide-react"
-import { useTheme } from "next-themes"
-import { Button } from "@/components/ui/button"
-import { motion } from "framer-motion"
+import { Moon, Sun } from 'lucide-react';
+import { useTheme } from '@/components/ThemeProvider';
+import { Button } from '@/components/ui/button';
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = React.useState(false)
-
-  // After mounting, we can show the toggle
-  React.useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) {
-    return null
-  }
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <Button
-      variant="outline"
+      variant="ghost"
       size="icon"
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="relative h-9 w-9 rounded-md border border-white/30 bg-white/10 backdrop-blur-sm overflow-hidden"
+      onClick={toggleTheme}
+      className="relative w-10 h-10 bg-white/10 backdrop-blur-sm border border-olive-300/50 dark:border-olive-700/50"
+      aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
     >
+      <Sun className={`h-5 w-5 transition-all ${theme === 'dark' ? 'rotate-90 scale-0' : 'rotate-0 scale-100'}`} />
+      <Moon className={`absolute h-5 w-5 transition-all ${theme === 'dark' ? 'rotate-0 scale-100' : 'rotate-90 scale-0'}`} />
       <span className="sr-only">Toggle theme</span>
-      
-      <div className="relative flex items-center justify-center">
-        {/* Animated sun */}
-        <motion.div
-          initial={{ opacity: theme === "dark" ? 0 : 1, scale: theme === "dark" ? 0.5 : 1 }}
-          animate={{ opacity: theme === "dark" ? 0 : 1, scale: theme === "dark" ? 0.5 : 1, rotate: theme === "dark" ? -45 : 0 }}
-          transition={{ duration: 0.3 }}
-          className={`absolute ${theme === "dark" ? "text-white/80" : "text-primary"}`}
-        >
-          <SunIcon className="h-5 w-5" />
-        </motion.div>
-        
-        {/* Animated moon */}
-        <motion.div
-          initial={{ opacity: theme === "dark" ? 1 : 0, scale: theme === "dark" ? 1 : 0.5 }}
-          animate={{ opacity: theme === "dark" ? 1 : 0, scale: theme === "dark" ? 1 : 0.5, rotate: theme === "dark" ? 0 : 45 }}
-          transition={{ duration: 0.3 }}
-          className={`absolute ${theme === "dark" ? "text-white" : "text-white/80"}`}
-        >
-          <MoonIcon className="h-5 w-5" />
-        </motion.div>
-      </div>
     </Button>
-  )
+  );
 } 
