@@ -50,6 +50,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
   };
 
+  // During SSR, render without theme context
+  if (typeof window === 'undefined') {
+    return <>{children}</>;
+  }
+
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <div className={!mounted ? 'opacity-0' : 'opacity-100 transition-opacity duration-300'}>
@@ -62,6 +67,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 export function useTheme() {
   const context = useContext(ThemeContext);
   if (context === undefined) {
+    // During SSR, return a default theme
+    if (typeof window === 'undefined') {
+      return { theme: 'light' as const, toggleTheme: () => {} };
+    }
     throw new Error('useTheme must be used within a ThemeProvider');
   }
   return context;

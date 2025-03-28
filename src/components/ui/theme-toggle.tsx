@@ -7,6 +7,24 @@ import { Button } from '@/components/ui/button';
 
 export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <Button
+        variant="ghost"
+        size="icon"
+        className="relative w-10 h-10 bg-white/10 backdrop-blur-sm border border-olive-300/50 dark:border-olive-700/50"
+      >
+        <Sun className="h-5 w-5" />
+        <span className="sr-only">Loading theme toggle</span>
+      </Button>
+    );
+  }
 
   return (
     <Button
