@@ -1,12 +1,14 @@
 'use client'
 
+import { use } from 'react'
 import { useTranslation } from '@/i18n/client'
 import { FeatureCard } from '@/components/FeatureCard'
 import { StepCard } from '@/components/StepCard'
 import { features, steps } from '@/data'
 
-export default function Home({ params }: { params: { lng: string } }) {
-  const { t } = useTranslation(params.lng, 'common')
+export default function Home({ params }: { params: Promise<{ lng: string }> }) {
+  const resolvedParams = use(params)
+  const { t } = useTranslation(resolvedParams.lng, 'common')
 
   return (
     <div className="w-full">

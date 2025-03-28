@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { dir } from 'i18next'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className="scroll-smooth">
+    <html lang="en" dir="ltr" suppressHydrationWarning className="scroll-smooth">
       <body className={inter.className} suppressHydrationWarning>
         {children}
       </body>

@@ -159,7 +159,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['var(--font-poppins)'],
-        cupcake: ['var(--font-cupcakes)'],
+        cupcake: ['var(--font-cupcake)'],
       },
     },
   },

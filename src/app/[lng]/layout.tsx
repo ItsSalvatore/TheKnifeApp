@@ -7,6 +7,7 @@ import AnimatedHeader from "@/components/AnimatedHeader";
 import { Providers } from "@/components/Providers";
 import '../globals.css'
 import '@/styles/themes.css'
+import { use } from 'react'
 
 const poppins = Poppins({ 
   subsets: ["latin"],
@@ -42,31 +43,34 @@ export async function generateStaticParams() {
 
 export default function RootLayout({
   children,
-  params: { lng },
+  params,
 }: {
   children: React.ReactNode;
-  params: { lng: string };
+  params: Promise<{ lng: string }>;
 }) {
+  const resolvedParams = use(params)
+  const lng = resolvedParams.lng
+
   return (
-    <html lang={lng} dir={dir(lng)} suppressHydrationWarning>
+    <>
       <head>
         <link 
           rel="preload" 
           href="/assets/fonts/CupCakes.otf" 
           as="font" 
           type="font/otf" 
-          crossOrigin="" 
+          crossOrigin="anonymous" 
           fetchPriority="high"
         />
       </head>
-      <body className={`${poppins.variable} ${cupcakes.variable} antialiased min-h-screen font-normal bg-[#cddfcd] dark:bg-olive-900`}>
+      <div className={`${poppins.variable} ${cupcakes.variable} antialiased min-h-screen font-normal bg-[#cddfcd] dark:bg-olive-900`}>
         <Providers locale={lng}>
           <AnimatedHeader />
           <main className="relative min-h-screen">
             {children}
           </main>
         </Providers>
-      </body>
-    </html>
+      </div>
+    </>
   );
 } 

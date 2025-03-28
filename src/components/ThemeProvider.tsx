@@ -13,18 +13,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  // Check if theme preference is stored
-  const getInitialTheme = (): Theme => {
-    if (typeof window !== 'undefined') {
-      const storedTheme = localStorage.getItem('theme') as Theme;
-      if (storedTheme) {
-        return storedTheme;
-      }
-    }
-    return 'light';
-  };
-
-  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+  const [theme, setTheme] = useState<Theme>('light');
   const [mounted, setMounted] = useState(false);
   
   // Check system preference
@@ -36,14 +25,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   );
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    // If no stored preference, follow system
-    if (!localStorage.getItem('theme')) {
+    // Initialize theme after mount
+    const storedTheme = localStorage.getItem('theme') as Theme;
+    if (storedTheme) {
+      setTheme(storedTheme);
+    } else {
       setTheme(systemPrefersDark ? 'dark' : 'light');
     }
+    setMounted(true);
   }, [systemPrefersDark]);
 
   useEffect(() => {
