@@ -8,6 +8,7 @@ import { ThemeToggle } from './ui/theme-toggle'
 import { useTranslation } from '@/i18n/client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { cn } from '@/lib/utils'
 
 export default function AnimatedHeader() {
   const pathname = usePathname()
@@ -19,29 +20,6 @@ export default function AnimatedHeader() {
     setMounted(true)
   }, [])
 
-  // Return a skeleton loader while not mounted
-  if (!mounted) {
-    return (
-      <header className="fixed top-0 left-0 right-0 z-50">
-        <nav className="px-4 py-6">
-          <div className="mx-auto max-w-5xl">
-            <div className="relative bg-[#cddfcd]/90 dark:bg-olive-800/90 
-                        backdrop-blur-sm rounded-2xl shadow-sm 
-                        border border-olive-300/50 dark:border-olive-700/50 
-                        px-4 py-3 flex justify-between items-center">
-              <div className="flex items-center gap-6">
-                <div className="flex items-center space-x-3">
-                  <span className="font-cupcake text-3xl text-olive-900 dark:text-white opacity-0">Scout</span>
-                  <span className="font-cupcake text-lg text-honey-600 dark:text-honey-500 opacity-0">à la jouw</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </header>
-    )
-  }
-
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       <nav className="px-4 py-6">
@@ -52,11 +30,24 @@ export default function AnimatedHeader() {
                       px-4 py-3 flex justify-between items-center">
             <div className="flex items-center gap-6">
               <Link href={`/${lng}`} className="flex items-center space-x-3 group">
-                <span className="font-cupcake text-3xl text-olive-900 dark:text-white">Scout</span>
-                <span className="font-cupcake text-lg text-honey-600">à la jouw</span>
+                <span className={cn(
+                  "font-cupcake text-3xl text-olive-900 dark:text-white transition-opacity duration-300",
+                  !mounted && "opacity-0"
+                )}>
+                  Scout
+                </span>
+                <span className={cn(
+                  "font-cupcake text-lg text-honey-600 transition-opacity duration-300",
+                  !mounted && "opacity-0"
+                )}>
+                  à la jouw
+                </span>
               </Link>
               
-              <div className="hidden md:flex items-center space-x-12">
+              <div className={cn(
+                "hidden md:flex items-center space-x-12 transition-opacity duration-300",
+                !mounted && "opacity-0"
+              )}>
                 <Link href={`/${lng}/explore`} className="nav-link font-cupcake text-olive-800 hover:text-honey-600 dark:text-white dark:hover:text-honey-500">
                   {t('nav.discover')}
                 </Link>
@@ -70,14 +61,20 @@ export default function AnimatedHeader() {
             </div>
 
             <div className="flex items-center gap-4">
-              <div className="hidden md:flex items-center gap-4">
+              <div className={cn(
+                "hidden md:flex items-center gap-4 transition-opacity duration-300",
+                !mounted && "opacity-0"
+              )}>
                 <LanguageSwitcher />
                 <ThemeToggle />
                 <Button className="btn-primary font-cupcake px-6 py-2 bg-honey-500 hover:bg-honey-600 text-white">
                   {t('nav.join_now')}
                 </Button>
               </div>
-              <button className="md:hidden p-2 text-olive-900 dark:text-white hover:text-honey-600 dark:hover:text-honey-500 transition-colors">
+              <button className={cn(
+                "md:hidden p-2 text-olive-900 dark:text-white hover:text-honey-600 dark:hover:text-honey-500 transition-colors",
+                !mounted && "opacity-0"
+              )}>
                 <Menu className="h-6 w-6" />
               </button>
             </div>

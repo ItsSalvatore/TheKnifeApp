@@ -61,14 +61,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
   };
 
-  // Prevent hydration mismatch
-  if (!mounted) {
-    return <>{children}</>;
-  }
-
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
+      <div className={!mounted ? 'opacity-0' : 'opacity-100 transition-opacity duration-300'}>
+        {children}
+      </div>
     </ThemeContext.Provider>
   );
 }

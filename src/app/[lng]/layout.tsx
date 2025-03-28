@@ -12,13 +12,18 @@ const poppins = Poppins({
   subsets: ["latin"],
   weight: ['300', '400', '500'],
   variable: '--font-poppins',
+  display: 'swap',
+  preload: true,
+  adjustFontFallback: true,
 });
 
 const cupcakes = localFont({
-  src: '../../../public/fonts/CupCakes.otf',
-  variable: '--font-cupcakes',
+  src: '../../assets/fonts/CupCakes.otf',
+  variable: '--font-cupcake',
   preload: true,
-  display: 'swap',
+  display: 'block',
+  fallback: ['cursive'],
+  adjustFontFallback: false,
 });
 
 export const metadata: Metadata = {
@@ -43,11 +48,18 @@ export default function RootLayout({
   params: { lng: string };
 }) {
   return (
-    <html lang={lng} dir={dir(lng)} suppressHydrationWarning className={`${poppins.variable} ${cupcakes.variable} font-sans antialiased`}>
+    <html lang={lng} dir={dir(lng)} suppressHydrationWarning>
       <head>
-        <link rel="preload" href="/fonts/CupCakes.otf" as="font" type="font/otf" crossOrigin="anonymous" />
+        <link 
+          rel="preload" 
+          href="/assets/fonts/CupCakes.otf" 
+          as="font" 
+          type="font/otf" 
+          crossOrigin="" 
+          fetchPriority="high"
+        />
       </head>
-      <body className="min-h-screen font-normal bg-[#cddfcd] dark:bg-olive-900">
+      <body className={`${poppins.variable} ${cupcakes.variable} antialiased min-h-screen font-normal bg-[#cddfcd] dark:bg-olive-900`}>
         <Providers locale={lng}>
           <AnimatedHeader />
           <main className="relative min-h-screen">
