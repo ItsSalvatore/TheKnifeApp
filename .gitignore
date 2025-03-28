@@ -16,13 +16,13 @@
 # next.js
 /.next/
 /out/
-
-# production
 /build
+.next-video
 
 # misc
 .DS_Store
 *.pem
+Thumbs.db
 
 # debug
 npm-debug.log*
@@ -30,8 +30,12 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# local env files
+.env*.local
+.env
+.env.development
+.env.test
+.env.production
 
 # vercel
 .vercel
@@ -40,6 +44,14 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# IDE
+.idea
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
 # next-video
 videos/*
 !videos/*.json
@@ -47,11 +59,15 @@ videos/*
 !videos/*.ts
 public/_next-video
 
-the-knife-site
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
-# next-video
-videos/*
-!videos/*.json
-!videos/*.js
-!videos/*.ts
-public/_next-video
+# Temporary folders
+tmp/
+temp/

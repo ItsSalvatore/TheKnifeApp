@@ -14,12 +14,7 @@
   }
 
   body {
-    background-color: var(--olive-light);
-    @apply text-olive-900;
-  }
-
-  body.dark {
-    @apply bg-olive-900 text-white;
+    @apply bg-[#f5f7f5] dark:bg-olive-900 text-olive-900 dark:text-white;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -73,11 +68,11 @@
   }
 
   .nav-link {
-    @apply text-olive-900 dark:text-white hover:text-honey-600 dark:hover:text-honey-500 transition-colors;
+    @apply text-olive-800 hover:text-honey-600 dark:text-white dark:hover:text-honey-500 transition-colors;
   }
 
   .btn-primary {
-    @apply bg-honey-500 hover:bg-honey-600 text-white rounded-full transition-colors;
+    @apply bg-honey-500 hover:bg-honey-600 text-white font-medium transition-colors;
   }
 
   .btn-secondary {
@@ -155,10 +150,21 @@
     @apply text-olive-900 dark:text-white;
     letter-spacing: 0.03em;
   }
+
+  .bg-honeycomb {
+    background-image: url('/honeycomb.svg');
+    background-repeat: repeat;
+    background-size: 600px auto;
+    mix-blend-mode: multiply;
+  }
 }
 
 @layer utilities {
   .text-shadow-sm {
     text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8);
+  }
+
+  .font-cupcake {
+    font-family: var(--font-cupcakes);
   }
 }

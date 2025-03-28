@@ -7,39 +7,63 @@ import { Menu } from 'lucide-react'
 import { ThemeToggle } from './ui/theme-toggle'
 import { useTranslation } from '@/i18n/client'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export default function AnimatedHeader() {
-  const { t } = useTranslation('common', 'common')
+  const pathname = usePathname()
+  const lng = pathname.split('/')[1]
+  const { t } = useTranslation(lng, 'common')
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  if (!mounted) return null
+  // Return a skeleton loader while not mounted
+  if (!mounted) {
+    return (
+      <header className="fixed top-0 left-0 right-0 z-50">
+        <nav className="px-4 py-6">
+          <div className="mx-auto max-w-5xl">
+            <div className="relative bg-[#cddfcd]/90 dark:bg-olive-800/90 
+                        backdrop-blur-sm rounded-2xl shadow-sm 
+                        border border-olive-300/50 dark:border-olive-700/50 
+                        px-4 py-3 flex justify-between items-center">
+              <div className="flex items-center gap-6">
+                <div className="flex items-center space-x-3">
+                  <span className="font-cupcake text-3xl text-olive-900 dark:text-white opacity-0">Scout</span>
+                  <span className="font-cupcake text-lg text-honey-600 dark:text-honey-500 opacity-0">à la jouw</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+    )
+  }
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       <nav className="px-4 py-6">
         <div className="mx-auto max-w-5xl">
-          <div className="relative bg-[#cddfcd]/90 dark:bg-olive-800/90 
+          <div className="relative bg-white/90 dark:bg-olive-800/90 
                       backdrop-blur-sm rounded-2xl shadow-sm 
                       border border-olive-300/50 dark:border-olive-700/50 
                       px-4 py-3 flex justify-between items-center">
             <div className="flex items-center gap-6">
-              <Link href="/" className="flex items-center space-x-3 group">
+              <Link href={`/${lng}`} className="flex items-center space-x-3 group">
                 <span className="font-cupcake text-3xl text-olive-900 dark:text-white">Scout</span>
-                <span className="font-cupcake text-lg text-honey-600 dark:text-honey-500">à la jouw</span>
+                <span className="font-cupcake text-lg text-honey-600">à la jouw</span>
               </Link>
               
               <div className="hidden md:flex items-center space-x-12">
-                <Link href="/explore" className="nav-link font-cupcake">
+                <Link href={`/${lng}/explore`} className="nav-link font-cupcake text-olive-800 hover:text-honey-600 dark:text-white dark:hover:text-honey-500">
                   {t('nav.discover')}
                 </Link>
-                <Link href="/how-it-works" className="nav-link font-cupcake">
+                <Link href={`/${lng}/how-it-works`} className="nav-link font-cupcake text-olive-800 hover:text-honey-600 dark:text-white dark:hover:text-honey-500">
                   {t('nav.how_it_works')}
                 </Link>
-                <Link href="/about" className="nav-link font-cupcake">
+                <Link href={`/${lng}/about`} className="nav-link font-cupcake text-olive-800 hover:text-honey-600 dark:text-white dark:hover:text-honey-500">
                   {t('nav.about')}
                 </Link>
               </div>

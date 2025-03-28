@@ -21,25 +21,26 @@ export default function I18nProvider({
   const [mounted, setMounted] = useState(false)
   const router = useRouter()
 
-  // Set the language once the component is mounted
+  // Set the language immediately to avoid hydration mismatch
   useEffect(() => {
-    if (i18next.language !== locale) {
-      i18next.changeLanguage(locale)
-    }
-    setMounted(true)
-  }, [locale])
+    i18next.changeLanguage(locale)
+  }, [])
 
-  // Only render children once mounted (to avoid hydration issues)
-  if (!mounted) return <>{children}</>
+  // Set mounted state after hydration
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   return (
-    <I18nContext.Provider value={{ locale, setLocale: (newLocale) => {
-      if (newLocale === locale) return
-      // Handle language change here (you could redirect to the new locale path)
-      const currentPath = window.location.pathname
-      const newPath = currentPath.replace(`/${locale}`, `/${newLocale}`)
-      router.push(newPath)
-    }}}>
+    <I18nContext.Provider value={{ 
+      locale, 
+      setLocale: (newLocale) => {
+        if (newLocale === locale) return
+        const currentPath = window.location.pathname
+        const newPath = currentPath.replace(`/${locale}`, `/${newLocale}`)
+        router.push(newPath)
+      }
+    }}>
       {children}
     </I18nContext.Provider>
   )

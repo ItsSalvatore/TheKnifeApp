@@ -17,7 +17,8 @@ i18next
     lng: undefined, // Let's detect the language on client side
     detection: {
       order: ['path', 'htmlTag', 'cookie', 'navigator'],
-    }
+    },
+    preload: ['en', 'nl'], // Preload both languages to avoid hydration issues
   })
 
 export function useTranslation(lng: string, ns: string, options = {}) {

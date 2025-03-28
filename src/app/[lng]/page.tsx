@@ -17,13 +17,13 @@ export default function Home({ params }: { params: { lng: string } }) {
           <h1 className="font-cupcake text-8xl md:text-9xl lg:text-[10rem] text-olive-900 dark:text-white mb-4 tracking-wide">
             Scout
           </h1>
-          <div className="space-y-4">
-            <p className="font-cupcake text-3xl md:text-4xl text-honey-600 dark:text-honey-500">
-              à la jouw
-            </p>
-            <p className="text-xl md:text-2xl text-olive-800 dark:text-olive-100 max-w-2xl mx-auto">
+          <div className="space-y-8">
+            <p className="text-xl md:text-2xl text-olive-800 dark:text-olive-100 max-w-2xl mx-auto font-medium">
               {t('header.subtitle')}
             </p>
+            <button className="btn-primary font-cupcake text-xl px-8 py-3 bg-honey-500 hover:bg-honey-600 text-white rounded-full">
+              {t('nav.join_now')}
+            </button>
           </div>
         </div>
       </section>
